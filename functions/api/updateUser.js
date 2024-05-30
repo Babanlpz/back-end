@@ -9,10 +9,13 @@ const cors = require("cors")({ origin: true });
  * @forPlay https://us-central1-codersbaban.cloudfunctions.net/updateUser
  * @documentation https://firebase.google.com/docs/auth/admin/manage-users#update_a_user
  */
+
+// POST method
 exports.updateUser = functions.https.onRequest((req, res) => {
   const uid = req.body.uid;
   const data = req.body.data;
 
+  // Check if the request is made by POST
   return cors(req, res, async () => {
     try {
       const userRecord = await admin.auth().updateUser(uid, data);
